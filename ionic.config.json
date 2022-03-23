@@ -1,0 +1,7 @@
+{
+  "name": "social-app-prototype",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
