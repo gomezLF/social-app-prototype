@@ -1,0 +1,99 @@
+ion-content {
+    --background: #F0F2F5;
+}
+
+.header {
+    background-image: url("../../../assets/img/login_header_background(2).svg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 31rem;
+    position: relative;
+}
+
+.welcomeMessage {
+    top: 10%;
+    left: 30%;
+    text-align: center;
+    position: absolute;
+    margin: -25px 0 0 -31px;
+}
+
+.welcomeMessage h1 {
+    color: white;
+    font-size: 48px;
+    margin: auto;
+    vertical-align: middle;
+}
+
+.form-wrapper {
+    margin-top: 5rem;
+    margin-bottom: 8rem;
+
+}
+
+.form-wrapper form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-wrapper form ion-input {
+    --background: #FAFAFA;
+    --placeholder-color: #9E9E9E;
+
+    border: solid 1px #9E9E9E;
+    border-radius: 15px;
+
+    --padding-start: 20px;
+    --padding-end: 20px;
+
+    width: 35rem;
+    height: 5rem;
+}
+
+.form-wrapper form .passwordField {
+    margin-top: 1.5rem;
+}
+
+.form-wrapper form .loginButton {
+    --background: #1877F2;
+    --border-radius: 15px;
+
+    font-weight: bold;
+
+    width: 35rem;
+    height: 4rem;
+
+    margin-top: 5rem;
+    --box-shadow: none;
+}
+
+.separator {
+    border-top: 1px solid #9E9E9E;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    
+    margin-bottom: 8rem;
+}
+
+.singpSection {
+    text-align: center;   
+}
+
+.singpSection .singupButton {
+    --background: #42B72A;
+    --border-radius: 15px;
+
+    font-weight: bold;
+
+    width: 25rem;
+    height: 4rem;
+
+    --box-shadow: none;
+}
+
+
+
+
+

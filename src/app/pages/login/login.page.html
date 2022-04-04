@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true">
+    <div class="header"></div>
+    <section class="welcomeMessage">
+        <h1>Bienvenido</h1>
+    </section>
+    <main>
+        <div class="form-wrapper">
+            <form>
+                <div>
+                    <ion-input class="emailField" type="text" placeholder="E-mail"></ion-input>
+                </div>
+                <div>
+                    <ion-input class="passwordField" type="password" placeholder="Contraseña"></ion-input>
+                </div>
+
+                <ion-button class="loginButton" type="submit">Iniciar sesión</ion-button>
+            </form>
+        </div>
+        <div class="singpSection">
+            <div class="separator"></div>
+            <ion-button class="singupButton" (click)="singupClicked()">Crear nueva cuenta</ion-button>
+        </div>
+    </main>
+</ion-content>
