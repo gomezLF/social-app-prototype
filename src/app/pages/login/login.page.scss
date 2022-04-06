@@ -13,7 +13,7 @@ ion-content {
 
 .welcomeMessage {
     top: 10%;
-    left: 30%;
+    left: 25%;
     text-align: center;
     position: absolute;
     margin: -25px 0 0 -31px;
@@ -56,17 +56,22 @@ ion-content {
     margin-top: 1.5rem;
 }
 
+ion-button {
+    text-transform: inherit;
+    font-weight: bold;
+
+    --box-shadow: none;
+    height: 4rem;
+}
+
 .form-wrapper form .loginButton {
     --background: #1877F2;
     --border-radius: 15px;
-
-    font-weight: bold;
 
     width: 35rem;
     height: 4rem;
 
     margin-top: 5rem;
-    --box-shadow: none;
 }
 
 .separator {
@@ -88,9 +93,6 @@ ion-content {
     font-weight: bold;
 
     width: 25rem;
-    height: 4rem;
-
-    --box-shadow: none;
 }
 
 
