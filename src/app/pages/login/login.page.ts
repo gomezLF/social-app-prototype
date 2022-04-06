@@ -13,8 +13,13 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  loginClicked() {
+    this.router.navigate(['./initial-tab']);
+  }
+
   singupClicked() {
     this.router.navigate(['./singup']);
   }
+
 
 }
