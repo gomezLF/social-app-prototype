@@ -6,7 +6,26 @@ import { InitialTabPage } from './initial-tab.page';
 const routes: Routes = [
   {
     path: '',
-    component: InitialTabPage
+    component: InitialTabPage,
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
+      },
+      {
+        path: 'publish',
+        loadChildren: () => import('../publish/publish.module').then( m => m.PublishPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
+      }
+    ]
   }
 ];
 
