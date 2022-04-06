@@ -11,9 +11,17 @@ ion-content {
     position: relative;
 }
 
+.backButton {
+    top: 0;
+    left: 0;
+    position: absolute;
+
+    --color: white;
+}
+
 .welcomeMessage {
     top: 10%;
-    left: 25%;
+    left: 22%;
     text-align: center;
     position: absolute;
     margin: -25px 0 0 -31px;
@@ -55,9 +63,10 @@ ion-content {
 }
 
 .form-wrapper form .singupButton {
-    --background: #1877F2;
+    --background: #42B72A;
     --border-radius: 15px;
 
+    text-transform: inherit;
     font-weight: bold;
 
     width: 35rem;
