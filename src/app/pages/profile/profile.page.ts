@@ -12,4 +12,8 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
   }
 
+  changeProfileImageClicked() {
+    console.log('hola');
+  }
+
 }
