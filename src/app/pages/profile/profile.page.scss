@@ -1,0 +1,61 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .profile-image-container {
+    background-image: url("../../../assets/img/person.jpeg");
+    width: 20rem;
+    height: 20rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    margin-top: 5rem;
+    border-radius: 50%;
+}
+
+.container .name-label {
+    font-size: 32px;
+    font-weight: bold;
+
+    margin-top: 2rem;
+}
+
+.edit-buttons-section {
+    margin-top: 2rem;
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-buttons-section ion-button {
+    text-transform: inherit;
+    font-weight: bold;
+
+    --box-shadow: none;
+    --border-radius: 15px;
+}
+
+.edit-buttons-section .edit-profile-button {
+    --background: #1877F2;
+    width: 30rem;
+
+    margin-right: 1rem;
+}
+
+.edit-buttons-section .more-options-button {
+    --background: #9E9E9E;
+}
+
+.form-container {
+    margin-top: 5rem;
+    padding-left: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
