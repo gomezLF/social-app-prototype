@@ -51,7 +51,7 @@
 }
 
 .form-container {
-    margin-top: 5rem;
+    margin-top: 3rem;
     padding-left: 3rem;
 
     display: flex;
@@ -59,3 +59,37 @@
     align-items: flex-start;
 }
 
+.form-container .input-container {
+    margin-top: 1rem;
+}
+
+.form-container ion-input {
+    --background: #FAFAFA;
+    --placeholder-color: #9E9E9E;
+
+    border: solid 1px #9E9E9E;
+    border-radius: 15px;
+
+    --padding-start: 20px;
+    --padding-end: 20px;
+
+    width: 35rem;
+    height: 5rem;
+}
+
+.form-container form .save-profile-button-container {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container form .save-profile-button-container ion-button {
+    --background: #1877F2;
+    width: 20rem;
+
+    text-transform: inherit;
+    font-weight: bold;
+
+    --box-shadow: none;
+    --border-radius: 15px;
+}
