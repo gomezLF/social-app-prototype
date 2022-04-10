@@ -5,15 +5,25 @@
     </section>
     <main>
         <div class="form-wrapper">
-            <form>
+            <form [formGroup]="loginForm">
                 <div>
-                    <ion-input class="emailField" type="text" placeholder="E-mail"></ion-input>
+                    <ion-input formControlName="email" class="emailField" type="text" placeholder="E-mail"></ion-input>
+                    <div *ngFor="let error of errormessages.email">
+                        <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+                            <small class="error-message">{{error.message}}</small>
+                        </ng-container>
+                    </div>
                 </div>
                 <div>
-                    <ion-input class="passwordField" type="password" placeholder="Contraseña"></ion-input>
+                    <ion-input formControlName="password" class="passwordField" type="password" placeholder="Contraseña"></ion-input>
+                    <div *ngFor="let error of errormessages.password">
+                        <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+                            <small class="error-message">{{error.message}}</small>
+                        </ng-container>
+                    </div>
                 </div>
 
-                <ion-button class="loginButton" (click)="loginClicked()" type="submit">Iniciar sesión</ion-button>
+                <ion-button [disabled]="!loginForm.valid" class="loginButton" (click)="loginClicked()" type="submit">Iniciar sesión</ion-button>
             </form>
         </div>
         <div class="singpSection">
