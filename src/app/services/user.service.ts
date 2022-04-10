@@ -81,6 +81,10 @@ export class UserService {
     this.saveUsers();
   }
 
+  async saveUsers() {
+    this.storage.set(USERS_KEY, this.users);
+  }
+
   private createInitialUsers() {
     this.createNewUser(1, 'Luis Pepito', 'Gomez Andrade', 'alfa@gmail.com', 'aplicacionesmoviles');
     this.createNewUser(2, 'Fulanito', 'Andrade Gomez', 'beta@gmail.com', 'aplicacionesmoviles');
@@ -93,7 +97,4 @@ export class UserService {
     );
   }
 
-  private async saveUsers() {
-    this.storage.set(USERS_KEY, this.users);
-  }
 }
