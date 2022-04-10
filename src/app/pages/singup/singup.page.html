@@ -8,6 +8,7 @@
     <main>
         <div class="form-wrapper">
             <form [formGroup]="singupForm">
+                
                 <div class="input-container">
                     <ion-input formControlName="name" class="firstNameField" type="text" placeholder="Nombre(s)"></ion-input>
                     <div *ngFor="let error of errormessages.name">
@@ -16,6 +17,7 @@
                         </ng-container>
                     </div>
                 </div>
+
                 <div class="input-container">
                     <ion-input formControlName="lastname" class="lastNameField" type="text" placeholder="Apellidos"></ion-input>
                     <div *ngFor="let error of errormessages.lastname">
@@ -24,6 +26,7 @@
                         </ng-container>
                     </div>
                 </div>
+
                 <div class="input-container">
                     <ion-input formControlName="email" class="emailField" type="email" placeholder="E-mail"></ion-input>
                     <div *ngFor="let error of errormessages.email">
@@ -32,6 +35,7 @@
                         </ng-container>
                     </div>
                 </div>
+
                 <div class="input-container">
                     <ion-input formControlName="password" class="passwordField" type="password" placeholder="Contraseña"></ion-input>
                     <div *ngFor="let error of errormessages.password">
@@ -43,6 +47,7 @@
                         </ng-container>
                     </div>
                 </div>
+
                 <div class="input-container">
                     <ion-input formControlName="confirmPassword" class="confirmPasswordField" type="password" placeholder="Confirmar contraseña"></ion-input>
                     <div *ngFor="let error of errormessages.confirmPassword">
