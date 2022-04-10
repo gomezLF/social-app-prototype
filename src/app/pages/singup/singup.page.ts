@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-singup',
@@ -12,7 +13,7 @@ export class SingupPage implements OnInit {
   singupForm: FormGroup;
   public errormessages: { name: { type: string; message: string }[]; lastname: { type: string; message: string }[]; email: { type: string; message: string }[]; password: { type: string; message: string }[]; confirmPassword: { type: string; message: string }[] };
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     this.initializeForm();
     this.initializeErrorMessages();
   }
@@ -38,6 +39,10 @@ export class SingupPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  singupClicked() {
+    this.router.navigate(['./login']);
   }
 
   private initializeForm() {

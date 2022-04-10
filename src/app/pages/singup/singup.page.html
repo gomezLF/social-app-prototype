@@ -8,7 +8,7 @@
     <main>
         <div class="form-wrapper">
             <form [formGroup]="singupForm">
-                
+
                 <div class="input-container">
                     <ion-input formControlName="name" class="firstNameField" type="text" placeholder="Nombre(s)"></ion-input>
                     <div *ngFor="let error of errormessages.name">
@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                <ion-button [disabled]="!singupForm.valid" class="singupButton" type="submit">Registrarse</ion-button>
+                <ion-button [disabled]="!singupForm.valid" class="singupButton" (click)="singupClicked()" type="submit">Registrarse</ion-button>
             </form>
         </div>
     </main>
