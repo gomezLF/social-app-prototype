@@ -14,6 +14,7 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginPage implements OnInit {
 
+  user: any;
   loginForm: FormGroup;
   public errormessages: { email: { type: string; message: string }[]; password: { type: string; message: string }[] };
 
@@ -35,11 +36,12 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUsers();
+    this.user = this.userService;
+    this.user.getUsers();
   }
 
   loginClicked() {
-    if(this.userService.validateUser(this.email.value, this.password.value)){
+    if(this.user.validateUser(this.email.value, this.password.value)){
       this.router.navigate(['./initial-tab']);
     }else {
       this.invalidUserAlert();
