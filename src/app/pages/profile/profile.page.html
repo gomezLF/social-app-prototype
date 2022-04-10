@@ -1,27 +1,27 @@
 <ion-content [fullscreen]="true">
     <div class="container">
         <div (click)="changeProfileImageClicked()" class="profile-image-container"></div>
-        <ion-label class="name-label">Pepito Perez</ion-label>
+        <p class="name-label">{{user.currentUser.profileName}}</p>
     </div>
    
     <div class="edit-buttons-section">
         <ion-button class="edit-profile-button">Editar perfil</ion-button>
-        <ion-button class="more-options-button">...</ion-button>
+        <ion-button (click)="moreOptionsClicked()" class="more-options-button">...</ion-button>
     </div>
 
     <div class="form-container">
         <form>
             <div class="input-container">
                 <ion-label>Nombre(s)</ion-label>
-                <ion-input type="text" placeholder="Nombre(s)"></ion-input>
+                <ion-input type="text" placeholder="Nombre(s)"  value="{{user.currentUser.name}}"></ion-input>
             </div>
             <div class="input-container">
               <ion-label>Apellidos</ion-label>
-              <ion-input type="text" placeholder="Apellidos"></ion-input>
+              <ion-input type="text" placeholder="Apellidos" value="{{user.currentUser.lastname}}"></ion-input>
             </div>
             <div class="input-container">
               <ion-label>Correo electrónico</ion-label>
-              <ion-input type="email" placeholder="Correo electrónico"></ion-input>
+              <ion-input type="email" placeholder="Correo electrónico" value="{{user.currentUser.email}}"></ion-input>
             </div>
 
             <div class="save-profile-button-container">
