@@ -48,7 +48,7 @@ export class SingupPage implements OnInit {
 
   singupClicked() {
     if(this.password.value === this.confirmPassword.value){
-      this.userService.createNewUser(this.name.value, this.lastname.value, this.email.value, this.password.value);
+      this.userService.createNewUser(0, this.name.value, this.lastname.value, this.email.value, this.password.value);
     }
 
     this.router.navigate(['./login']);

@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.user = this.userService;
-    this.user.getUsers();
+    console.log('getUsers call');
   }
 
   loginClicked() {

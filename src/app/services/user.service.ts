@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
+import { Storage } from '@ionic/storage-angular';
+import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
+import { BehaviorSubject, from, of } from 'rxjs';
+
+const USERS_KEY = 'users';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +28,19 @@ export class UserService {
     password: string;
   };
 
-  constructor(private http: HttpClient) { }
+  private storageReady = new BehaviorSubject(false);
+
+  constructor(private http: HttpClient, private storage: Storage) {
+    this.users = [];
+    this.init();
+   }
+
+  async init() {
+    await this.storage.defineDriver(CordovaSQLiteDriver);
+    await this.storage.create();
+    this.storageReady.next(true);
+    this.createInitialUsers();
+  }
 
   getUsers() {
     this.loadUser().subscribe(res=>{
@@ -45,11 +62,16 @@ export class UserService {
     return login;
   }
 
-  createNewUser(name: string, lastname: string, email: string, password: string) {
+  createNewUser(id: number, name: string, lastname: string, email: string, password: string) {
     console.log(this.users);
+    let newId = id;
+
+    if(newId === 0){
+      newId = this.users.length + 1;
+    }
 
     const newUser = {
-      id: this.users.length + 1,
+      id: newId,
       name: '' + name,
       lastname: '' + lastname,
       email: '' + email,
@@ -57,22 +79,22 @@ export class UserService {
     };
 
     this.users.push(newUser);
+    this.saveUsers();
+  }
+
+  private createInitialUsers() {
+    this.createNewUser(1, 'Luis Pepito', 'Gomez Andrade', 'alfa@gmail.com', 'aplicacionesmoviles');
+    this.createNewUser(2, 'Fulanito', 'Andrade Gomez', 'beta@gmail.com', 'aplicacionesmoviles');
   }
 
   private loadUser() {
-    return this.http.
-    get('../../../assets/files/users.json').
-    pipe(
-      map((res: any) =>res.users)
+    return this.storageReady.pipe(
+      filter(ready => ready),
+      switchMap(_ => from(this.storage.get(USERS_KEY)) || of([]))
     );
   }
 
-  private saveUsers() {
-    this.http.post('../../../assets/files/users.json', this.users).subscribe(data=> {
-      console.log('../../../assets/files/users.json');
-    }, error => {
-      console.log(error);
-    }
-    );
+  private async saveUsers() {
+    this.storage.set(USERS_KEY, this.users);
   }
 }
