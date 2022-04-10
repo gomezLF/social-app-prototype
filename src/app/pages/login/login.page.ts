@@ -1,6 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +12,26 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 })
 export class LoginPage implements OnInit {
 
+  users: Array<{
+    id: any;
+    name: string;
+    lastname: string;
+    email: string;
+    password: string;
+  }>;
+
+  currentUser: {
+    id: string;
+    name: string;
+    lastname: string;
+    email: string;
+    password: string;
+  };
+
   loginForm: FormGroup;
   public errormessages: { email: { type: string; message: string }[]; password: { type: string; message: string }[] };
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private http: HttpClient) {
     this.initializeForm();
     this.initializrErrorMessages();
   }
@@ -26,10 +45,20 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getUsers().subscribe(res=>{
+      this.users = res;
+    });
   }
 
   loginClicked() {
-    this.router.navigate(['./initial-tab']);
+
+    for (const iterator of this.users) {
+      if(iterator.email === this.email.value && iterator.password === this.password.value){
+        this.router.navigate(['./initial-tab']);
+      }else {
+        console.log('INcorrectos');
+      }
+    }
   }
 
   singupClicked() {
@@ -55,7 +84,13 @@ export class LoginPage implements OnInit {
     };
   }
 
-
+  private getUsers() {
+    return this.http.
+    get('../../../assets/files/users.json').
+    pipe(
+      map((res: any) =>res.users)
+    );
+  }
 
 
 }
