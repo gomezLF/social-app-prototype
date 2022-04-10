@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 export class UserService {
 
   users: Array<{
-    id: any;
+    id: number;
     name: string;
     lastname: string;
     email: string;
@@ -16,7 +16,7 @@ export class UserService {
   }>;
 
   currentUser: {
-    id: string;
+    id: number;
     name: string;
     lastname: string;
     email: string;
@@ -45,11 +45,34 @@ export class UserService {
     return login;
   }
 
+  createNewUser(name: string, lastname: string, email: string, password: string) {
+    console.log(this.users);
+
+    const newUser = {
+      id: this.users.length + 1,
+      name: '' + name,
+      lastname: '' + lastname,
+      email: '' + email,
+      password: '' + password,
+    };
+
+    this.users.push(newUser);
+  }
+
   private loadUser() {
     return this.http.
     get('../../../assets/files/users.json').
     pipe(
       map((res: any) =>res.users)
+    );
+  }
+
+  private saveUsers() {
+    this.http.post('../../../assets/files/users.json', this.users).subscribe(data=> {
+      console.log('../../../assets/files/users.json');
+    }, error => {
+      console.log(error);
+    }
     );
   }
 }
