@@ -1,6 +1,5 @@
-/* eslint-disable max-len */
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +10,11 @@ import { Router } from '@angular/router';
 export class SingupPage implements OnInit {
 
   singupForm: FormGroup;
-  public errormessages: { name: { type: string; message: string }[]; lastname: { type: string; message: string }[]; email: { type: string; message: string }[]; password: { type: string; message: string }[]; confirmPassword: { type: string; message: string }[] };
+  public errormessages: { name: { type: string; message: string }[];
+                          lastname: { type: string; message: string }[];
+                          email: { type: string; message: string }[];
+                          password: { type: string; message: string }[];
+                          confirmPassword: { type: string; message: string }[]; };
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.initializeForm();
