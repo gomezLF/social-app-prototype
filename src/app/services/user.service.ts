@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 import { Storage } from '@ionic/storage-angular';
 import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
 import { BehaviorSubject, from, of } from 'rxjs';
@@ -30,7 +29,7 @@ export class UserService {
 
   private storageReady = new BehaviorSubject(false);
 
-  constructor(private http: HttpClient, private storage: Storage) {
+  constructor(private storage: Storage) {
     this.users = [];
     this.init();
    }
