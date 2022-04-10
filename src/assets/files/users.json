@@ -1,0 +1,18 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Luis Pepito",
+            "lastname": "Gomez Andrade",
+            "email": "alfa@gmail.com",
+            "password": "aplicacionesmoviles"
+        },
+        {
+            "id": 2,
+            "name": "Julanito",
+            "lastname": "Andrade Gomez",
+            "email": "beta@gmail.com",
+            "password": "aplicacionesmoviles"
+        }
+    ]
+}
