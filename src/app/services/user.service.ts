@@ -12,7 +12,8 @@ const USERS_KEY = 'users';
 export class UserService {
 
   users: Array<{
-    id: number;
+    id: string;
+    profileName: string;
     name: string;
     lastname: string;
     email: string;
@@ -20,7 +21,8 @@ export class UserService {
   }>;
 
   currentUser: {
-    id: number;
+    id: string;
+    profileName: string;
     name: string;
     lastname: string;
     email: string;
@@ -32,7 +34,23 @@ export class UserService {
   constructor(private storage: Storage) {
     this.users = [];
     this.init();
-   }
+  }
+
+  setProfileName(profileName: string){
+    this.currentUser.profileName = profileName;
+  }
+
+  setName(name: string){
+    this.currentUser.name = name;
+  }
+
+  setLastname(lastname: string) {
+    this.currentUser.lastname = lastname;
+  }
+
+  setEmail(email: string){
+    this.currentUser.email = email;
+  }
 
   async init() {
     await this.storage.defineDriver(CordovaSQLiteDriver);
@@ -70,7 +88,8 @@ export class UserService {
     }
 
     const newUser = {
-      id: newId,
+      id: '' + newId,
+      profileName: '' + name + ' ' + lastname,
       name: '' + name,
       lastname: '' + lastname,
       email: '' + email,
