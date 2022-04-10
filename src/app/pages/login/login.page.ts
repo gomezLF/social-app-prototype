@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,10 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   public errormessages: { email: { type: string; message: string }[]; password: { type: string; message: string }[] };
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder,
+              private router: Router, private http: HttpClient,
+              private alertController: AlertController) {
+
     this.initializeForm();
     this.initializrErrorMessages();
   }
@@ -51,14 +55,22 @@ export class LoginPage implements OnInit {
   }
 
   loginClicked() {
+    let login = false;
 
-    for (const iterator of this.users) {
-      if(iterator.email === this.email.value && iterator.password === this.password.value){
+    for (let index = 0; index < this.users.length && !login; index++) {
+      const element = this.users[index];
+
+      if(element.email === this.email.value && element.password === this.password.value){
+        login = true;
+        this.currentUser = element;
         this.router.navigate(['./initial-tab']);
-      }else {
-        console.log('INcorrectos');
       }
     }
+
+    if(!login){
+      this.invalidUserAlert();
+    }
+
   }
 
   singupClicked() {
@@ -90,6 +102,16 @@ export class LoginPage implements OnInit {
     pipe(
       map((res: any) =>res.users)
     );
+  }
+
+  private async invalidUserAlert(){
+    const alert = await this.alertController.create({
+      header: 'Usuario Incorrecto',
+      message: 'Correo electrónico o contraseña incorrectas.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 
