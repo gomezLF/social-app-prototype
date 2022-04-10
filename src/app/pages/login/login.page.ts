@@ -5,6 +5,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,28 +14,13 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  users: Array<{
-    id: any;
-    name: string;
-    lastname: string;
-    email: string;
-    password: string;
-  }>;
-
-  currentUser: {
-    id: string;
-    name: string;
-    lastname: string;
-    email: string;
-    password: string;
-  };
-
   loginForm: FormGroup;
   public errormessages: { email: { type: string; message: string }[]; password: { type: string; message: string }[] };
 
   constructor(private formBuilder: FormBuilder,
               private router: Router, private http: HttpClient,
-              private alertController: AlertController) {
+              private alertController: AlertController,
+              private userService: UserService) {
 
     this.initializeForm();
     this.initializrErrorMessages();
@@ -49,28 +35,15 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getUsers().subscribe(res=>{
-      this.users = res;
-    });
+    this.userService.getUsers();
   }
 
   loginClicked() {
-    let login = false;
-
-    for (let index = 0; index < this.users.length && !login; index++) {
-      const element = this.users[index];
-
-      if(element.email === this.email.value && element.password === this.password.value){
-        login = true;
-        this.currentUser = element;
-        this.router.navigate(['./initial-tab']);
-      }
-    }
-
-    if(!login){
+    if(this.userService.validateUser(this.email.value, this.password.value)){
+      this.router.navigate(['./initial-tab']);
+    }else {
       this.invalidUserAlert();
     }
-
   }
 
   singupClicked() {
@@ -94,14 +67,6 @@ export class LoginPage implements OnInit {
         { type: 'required', message: 'La contraseña es obligatoria'},
       ]
     };
-  }
-
-  private getUsers() {
-    return this.http.
-    get('../../../assets/files/users.json').
-    pipe(
-      map((res: any) =>res.users)
-    );
   }
 
   private async invalidUserAlert(){
