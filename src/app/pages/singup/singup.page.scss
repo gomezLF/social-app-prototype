@@ -46,7 +46,11 @@ ion-content {
     align-items: center;
 }
 
-.form-wrapper form ion-input {
+.form-wrapper form .input-container {
+    margin-bottom: 1.5rem;
+}
+
+.form-wrapper form .input-container ion-input {
     --background: #FAFAFA;
     --placeholder-color: #9E9E9E;
 
@@ -55,8 +59,6 @@ ion-content {
 
     --padding-start: 20px;
     --padding-end: 20px;
-
-    margin-bottom: 1.5rem;
 
     width: 35rem;
     height: 5rem;
@@ -74,6 +76,10 @@ ion-content {
 
     margin-top: 5rem;
     --box-shadow: none;
+}
+
+.error-message {
+    color: var(--ion-color-danger);
 }
 
 
