@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
     <div class="container">
         <div (click)="changeProfileImageClicked()" class="profile-image-container"></div>
-        <p class="name-label">{{user.currentUser.profileName}}</p>
+        <p class="name-label" #labelProfileName contenteditable="true">{{user.currentUser.profileName}}</p>
     </div>
    
     <div class="edit-buttons-section">
@@ -13,19 +13,19 @@
         <form>
             <div class="input-container">
                 <ion-label>Nombre(s)</ion-label>
-                <ion-input type="text" placeholder="Nombre(s)"  value="{{user.currentUser.name}}"></ion-input>
+                <ion-input type="text" [(ngModel)]="nameInputValue" [ngModelOptions]="{standalone: true}" placeholder="Nombre(s)" value="{{user.currentUser.name}}"></ion-input>
             </div>
             <div class="input-container">
               <ion-label>Apellidos</ion-label>
-              <ion-input type="text" placeholder="Apellidos" value="{{user.currentUser.lastname}}"></ion-input>
+              <ion-input type="text" [(ngModel)]="lastnameInputValue" [ngModelOptions]="{standalone: true}" placeholder="Apellidos" value="{{user.currentUser.lastname}}"></ion-input>
             </div>
             <div class="input-container">
               <ion-label>Correo electrónico</ion-label>
-              <ion-input type="email" placeholder="Correo electrónico" value="{{user.currentUser.email}}"></ion-input>
+              <ion-input type="email" [(ngModel)]="emailInputValue" [ngModelOptions]="{standalone: true}" placeholder="Correo electrónico" value="{{user.currentUser.email}}"></ion-input>
             </div>
 
             <div class="save-profile-button-container">
-              <ion-button>Guardar Cambios</ion-button>
+              <ion-button (click)="saveChangesClicked()">Guardar Cambios</ion-button>
             </div>
         </form>
     </div>

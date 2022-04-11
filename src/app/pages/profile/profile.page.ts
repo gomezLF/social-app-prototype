@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -9,10 +10,19 @@ import { Router } from '@angular/router';
 })
 export class ProfilePage implements OnInit {
 
+  @ViewChild('labelProfileName') profileNameLabel: ElementRef;
+
   user: any;
+  nameInputValue: string;
+  lastnameInputValue: string;
+  emailInputValue: string;
 
   constructor(private router: Router, private userService: UserService) {
     this.user = userService;
+
+    this.nameInputValue = this.user.currentUser.name;
+    this.lastnameInputValue = this.user.currentUser.lastname;
+    this.emailInputValue = this.user.currentUser.email;
    }
 
   ngOnInit() {
@@ -24,6 +34,14 @@ export class ProfilePage implements OnInit {
 
   moreOptionsClicked() {
     this.router.navigate(['./login']);
+  }
+
+  saveChangesClicked() {
+    console.log(this.profileNameLabel);
+    console.log(this.nameInputValue);
+    console.log(this.lastnameInputValue);
+    console.log(this.emailInputValue);
+    console.log(this.profileNameLabel.nativeElement.innerText);
   }
 
 }
