@@ -51,6 +51,8 @@ export class ProfilePage implements OnInit {
         text: 'Cerrar sesión',
         icon: 'log-out',
         handler: () => {
+          //this.user.currentUser.login = false;
+          this.user.saveUsers();
           this.router.navigate(['./login']);
         }
       },

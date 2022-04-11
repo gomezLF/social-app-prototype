@@ -22,11 +22,10 @@ export class LoginPage implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router, private http: HttpClient,
               private alertController: AlertController,
-              @Inject(forwardRef(() => UserService)) userService: UserService) {
+              private userService: UserService) {
 
     this.initializeForm();
     this.initializrErrorMessages();
-    this.user = userService;
   }
 
   get email() {
@@ -38,7 +37,11 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-
+    this.user = this.userService;
+    console.log('HOla');
+    if(this.user.login) {
+      this.router.navigate(['./initial-tab']);
+    }
   }
 
   loginClicked() {

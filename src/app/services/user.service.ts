@@ -9,6 +9,8 @@ const USERS_KEY = 'users';
 @Injectable()
 export class UserService {
 
+  login = false;
+
   users: Array<{
     id: string;
     profileName: string;
@@ -16,6 +18,7 @@ export class UserService {
     lastname: string;
     email: string;
     password: string;
+    login: boolean;
   }> = [];
 
   currentUser: {
@@ -25,6 +28,7 @@ export class UserService {
     lastname: string;
     email: string;
     password: string;
+    login: boolean;
   };
 
   private storageReady = new BehaviorSubject(false);
@@ -49,9 +53,9 @@ export class UserService {
     this.currentUser.email = email;
   }
 
-  async init() {
-    await this.storage.defineDriver(CordovaSQLiteDriver);
-    await this.storage.create();
+  init() {
+    this.storage.defineDriver(CordovaSQLiteDriver);
+    this.storage.create();
     this.storageReady.next(true);
     this.createInitialUsers();
   }
@@ -63,17 +67,20 @@ export class UserService {
   }
 
   validateUser(email, password): boolean {
-    let login = false;
+    let stop = false;
 
-    for (let index = 0; index < this.users.length && !login; index++) {
+    for (let index = 0; index < this.users.length && !stop; index++) {
       const element = this.users[index];
 
       if(element.email === email && element.password === password){
-        login = true;
+        stop = true;
+        element.login = true;
         this.currentUser = element;
+
+        this.saveUsers();
       }
     }
-    return login;
+    return stop;
   }
 
   createNewUser(id: number, name: string, lastname: string, email: string, password: string) {
@@ -90,13 +97,14 @@ export class UserService {
       lastname: '' + lastname,
       email: '' + email,
       password: '' + password,
+      login: false
     };
 
     this.users.push(newUser);
     this.saveUsers();
   }
 
-  async saveUsers() {
+  saveUsers() {
     this.storage.set(USERS_KEY, this.users);
   }
 
@@ -108,6 +116,20 @@ export class UserService {
 
     console.log(this.users);
     this.saveUsers();
+  }
+
+  private validateLogin() {
+    let stop = false;
+
+    for (let index = 0; index < this.users.length && !stop; index++) {
+      const element = this.users[index];
+
+      if(element.login === true){
+        stop = true;
+        this.login = true;
+        this.currentUser = element;
+      }
+    }
   }
 
   private createInitialUsers() {
