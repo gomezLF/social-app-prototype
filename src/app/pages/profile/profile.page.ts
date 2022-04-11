@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { ElementRef } from '@angular/core';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,7 @@ export class ProfilePage implements OnInit {
   lastnameInputValue: string;
   emailInputValue: string;
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private actionSheetController: ActionSheetController, private router: Router, private userService: UserService) {
     this.user = userService;
 
     this.nameInputValue = this.user.currentUser.name;
@@ -33,7 +34,7 @@ export class ProfilePage implements OnInit {
   }
 
   moreOptionsClicked() {
-    this.router.navigate(['./login']);
+    this.presentActionSheet();
   }
 
   saveChangesClicked() {
@@ -41,6 +42,28 @@ export class ProfilePage implements OnInit {
                                 this.nameInputValue,
                                 this.lastnameInputValue,
                                 this.emailInputValue);
+  }
+
+  private async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: '¿Desea cerrar sesión?',
+      buttons: [{
+        text: 'Cerrar sesión',
+        icon: 'log-out',
+        handler: () => {
+          this.router.navigate(['./login']);
+        }
+      },
+      {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
 }
