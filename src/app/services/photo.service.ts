@@ -18,6 +18,16 @@ export class PhotoService {
     imageUser: string;
   }> = [];
 
+  currentPhoto: {
+    id: number;
+    pathPhoto: string;
+    message: string;
+    place: string;
+    idUser: number;
+    profileNameUser: string;
+    imageUser: string;
+  };
+
   user: UserService;
 
   constructor(private userService: UserService) {
