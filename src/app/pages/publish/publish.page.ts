@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotoService } from '../../services/photo.service';
 
 @Component({
   selector: 'app-publish',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublishPage implements OnInit {
 
-  constructor() { }
+  photo: PhotoService;
+
+  constructor(private photoService: PhotoService) {
+    this.photo = this.photoService;
+  }
 
   ngOnInit() {
   }
