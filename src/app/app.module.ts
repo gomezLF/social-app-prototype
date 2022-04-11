@@ -27,7 +27,7 @@ import { PhotoService } from './services/photo.service';
       driverOrder: [CordovaSQLiteDriver._driver, Drivers.IndexedDB, Drivers.LocalStorage]
     })
   ],
-  providers: [UserService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [UserService, PhotoService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {
