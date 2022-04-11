@@ -1,16 +1,25 @@
 <ion-content [fullscreen]="true">
-   <div class="images-container">
-       <h2 class="image-title">Imagenes seleccionadas:</h2>
-       <ion-img [src]="photo.photo"></ion-img>
-   </div>
-   <div class="location-container">
-    <ion-item>
-        <ion-label>Users</ion-label>
-        <ion-select >
-          <ion-select-option *ngFor="let city of cities" [value]="city">{{city.city}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-   </div>
+    <div class="content-container">
+        <h1>Nueva publicación</h1>
+        <div class="images-container">
+            <h2>Imagen seleccionada</h2>
+            <ion-img [src]="photo.photo"></ion-img>
+        </div>
+        <div class="location-container">
+             <ion-item>
+                 <ion-label>Ubicación</ion-label>
+                 <ion-select >
+                 <ion-select-option *ngFor="let city of cities" [value]="city">{{city.city}}</ion-select-option>
+                 </ion-select>
+             </ion-item>
+        </div>
+        <div class="message-container">
+             <ion-textarea class="message-texarea"></ion-textarea>
+        </div>
+        <div class="publish-button-container">
+            <ion-button class="publish">Publicar</ion-button>
+        </div>
+    </div>
    
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="optionsClicked()">
