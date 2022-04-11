@@ -1,12 +1,10 @@
 
-import { Component, forwardRef, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
 import { UserService } from '../../services/user.service';
-import { AppModule } from 'src/app/app.module';
 
 @Component({
   selector: 'app-login',
