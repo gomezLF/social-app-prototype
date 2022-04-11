@@ -25,14 +25,14 @@ export class PublishPage implements OnInit {
         text: 'Tomar foto',
         icon: 'camera',
         handler: () => {
-          this.takephoto();
+          this.photo.takephoto();
         }
       },
       {
         text: 'Escoger imagen de la galeria',
         icon: 'image',
         handler: () => {
-          this.pickPicture();
+          this.photo.pickPicture();
         }
       },
       {
@@ -45,14 +45,6 @@ export class PublishPage implements OnInit {
       }]
     });
     await actionSheet.present();
-  }
-
-  private takephoto() {
-
-  }
-
-  private pickPicture() {
-
   }
 
 }
