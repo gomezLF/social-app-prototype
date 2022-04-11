@@ -35,10 +35,7 @@ export class PhotoService {
     imageUser: string;
   };
 
-  user: UserService;
-
-  constructor(private userService: UserService) {
-    this.user = this.userService;
+  constructor() {
     this.requestPermission();
     //this.getCurrentUser();
   }
@@ -64,10 +61,5 @@ export class PhotoService {
 
   private requestPermission() {
     Camera.requestPermissions({permissions:['photos']});
-  }
-
-  private getCurrentUser() {
-    this.currentPhoto.idUser = this.user.currentUser.id;
-    this.currentPhoto.profileNameUser = this.user.currentUser.profileName;
   }
 }

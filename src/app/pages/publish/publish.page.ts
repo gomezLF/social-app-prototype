@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { PhotoService } from '../../services/photo.service';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-publish',
@@ -10,12 +12,18 @@ import { PhotoService } from '../../services/photo.service';
 export class PublishPage implements OnInit {
 
   photo: PhotoService;
+  cities: any;
 
-  constructor(private photoService: PhotoService, private actionSheetController: ActionSheetController) {
+  constructor(private photoService: PhotoService,
+              private actionSheetController: ActionSheetController,
+              private httpClient: HttpClient) {
     this.photo = this.photoService;
   }
 
   ngOnInit() {
+    this.loadCities().subscribe(res => {
+      this.cities = res;
+    });
   }
 
   async optionsClicked() {
@@ -45,6 +53,11 @@ export class PublishPage implements OnInit {
       }]
     });
     await actionSheet.present();
+  }
+
+  private loadCities() {
+    return this.httpClient.get('../../../assets/files/co.json')
+    .pipe(map((res: any) => res.data));
   }
 
 }

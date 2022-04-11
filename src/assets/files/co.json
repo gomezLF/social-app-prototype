@@ -1,0 +1,310 @@
+{
+  "data": [
+    {
+      "city": "Alcalá"
+    }, 
+    {
+      "city": "Andalucía"
+    }, 
+    {
+      "city": "Ansermanuevo"
+    }, 
+    {
+      "city": "Argelia"
+    }, 
+    {
+      "city": "Bolívar"
+    }, 
+    {
+      "city": "Buenaventura"
+    }, 
+    {
+      "city": "Bugalagrande"
+    }, 
+    {
+      "city": "Caicedonia"
+    }, 
+    {
+      "city": "Cali"
+    }, 
+    {
+      "city": "Calima"
+    }, 
+    {
+      "city": "Candelaria"
+    }, 
+    {
+      "city": "Cartago"
+    }, 
+    {
+      "city": "Dagua"
+    }, 
+    {
+      "city": "El Águila"
+    }, 
+    {
+      "city": "El Cairo"
+    }, 
+    {
+      "city": "El Cerrito"
+    }, 
+    {
+      "city": "El Dovio"
+    }, 
+    {
+      "city": "Florida"
+    }, 
+    {
+      "city": "Ginebra"
+    }, 
+    {
+      "city": "Guacarí"
+    }, 
+    {
+      "city": "Guadalajara de Buga"
+    }, 
+    {
+      "city": "Jamundí"
+    }, 
+    {
+      "city": "La Cumbre"
+    }, 
+    {
+      "city": "Sincelejo"
+    }, 
+    {
+      "city": "Floridablanca"
+    }, 
+    {
+      "city": "Itagüí"
+    }, 
+    {
+      "city": "Envigado"
+    }, 
+    {
+      "city": "Tuluá"
+    }, 
+    {
+      "city": "Tumaco"
+    }, 
+    {
+      "city": "Barrancabermeja"
+    }, 
+    {
+      "city": "Tunja"
+    }, 
+    {
+      "city": "Zipaquirá"
+    }, 
+    {
+      "city": "Turbo"
+    }, 
+    {
+      "city": "Yopal"
+    }, 
+    {
+      "city": "Dosquebradas"
+    }, 
+    {
+      "city": "Ríohacha"
+    }, 
+    {
+      "city": "Girón"
+    }, 
+    {
+      "city": "Florencia"
+    }, 
+    {
+      "city": "Fusagasugá"
+    }, 
+    {
+      "city": "Cartago"
+    }, 
+    {
+      "city": "Pitalito"
+    }, 
+    {
+      "city": "Ciénaga"
+    }, 
+    {
+      "city": "Sogamoso"
+    }, 
+    {
+      "city": "Quibdó"
+    }, 
+    {
+      "city": "Girardot"
+    }, 
+    {
+      "city": "Duitama"
+    }, 
+    {
+      "city": "Magangué"
+    }, 
+    {
+      "city": "Maicao"
+    }, 
+    {
+      "city": "Uribia"
+    }, 
+    {
+      "city": "Piedecuesta"
+    }, 
+    {
+      "city": "Facatativá"
+    }, 
+    {
+      "city": "Guadalajara de Buga"
+    }, 
+    {
+      "city": "Madrid"
+    }, 
+    {
+      "city": "Santander de Quilichao"
+    }, 
+    {
+      "city": "Aguachica"
+    }, 
+    {
+      "city": "Ipiales"
+    }, 
+    {
+      "city": "Chía"
+    }, 
+    {
+      "city": "Jamundí"
+    }, 
+    {
+      "city": "Arauca"
+    }, 
+    {
+      "city": "Yumbo"
+    }, 
+    {
+      "city": "Mosquera"
+    }, 
+    {
+      "city": "Fundación"
+    }, 
+    {
+      "city": "Ocaña"
+    }, 
+    {
+      "city": "Montelíbano"
+    }, 
+    {
+      "city": "Chiquinquirá"
+    }, 
+    {
+      "city": "Sabanalarga"
+    }, 
+    {
+      "city": "Chigorodó"
+    }, 
+    {
+      "city": "Cereté"
+    }, 
+    {
+      "city": "Caldas"
+    }, 
+    {
+      "city": "Funza"
+    }, 
+    {
+      "city": "Los Patios"
+    }, 
+    {
+      "city": "Tierralta"
+    }, 
+    {
+      "city": "El Carmen de Bolívar"
+    },
+    {
+      "city": "La Dorada"
+    },
+    {
+      "city": "Arjona"
+    }, 
+    {
+      "city": "Turbaco"
+    }, 
+    {
+      "city": "Espinal"
+    }, 
+    {
+      "city": "Acacías"
+    }, 
+    {
+      "city": "Copacabana"
+    }, 
+    {
+      "city": "Santa Rosa de Cabal"
+    }, 
+    {
+      "city": "San Vicente del Caguán"
+    }, 
+    {
+      "city": "San Andrés"
+    }, 
+    {
+      "city": "Corozal"
+    }, 
+    {
+      "city": "Villa del Rosario"
+    }, 
+    {
+      "city": "Garzón"
+    }, 
+    {
+      "city": "Planeta Rica"
+    }, 
+    {
+      "city": "Necoclí"
+    }, 
+    {
+      "city": "San José del Guaviare"
+    }, 
+    {
+      "city": "Manaure"
+    }, 
+    {
+      "city": "Marinilla"
+    }, 
+    {
+      "city": "Ciénaga de Oro"
+    }, 
+    {
+      "city": "Puerto Asís"
+    }, 
+    {
+      "city": "Riosucio"
+    }, 
+    {
+      "city": "Plato"
+    }, 
+    {
+      "city": "Carepa"
+    }, 
+    {
+      "city": "Cajicá"
+    }, 
+    {
+      "city": "Villamaría"
+    }, 
+    {
+      "city": "San Marcos"
+    }, 
+    {
+      "city": "Girardota"
+    }, 
+    {
+      "city": "Florida"
+    }, 
+    {
+      "city": "Pamplona"
+    }, 
+    {
+      "city": "Pradera"
+    }
+  ]
+}

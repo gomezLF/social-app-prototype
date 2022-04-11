@@ -1,11 +1,17 @@
 <ion-content [fullscreen]="true">
-    <div class="card-container">
-        <ion-card>
-            <ion-card-header>
-                <ion-img [src]="photo.photo"></ion-img>
-            </ion-card-header>
-        </ion-card>
-    </div>
+   <div class="images-container">
+       <h2 class="image-title">Imagenes seleccionadas:</h2>
+       <ion-img [src]="photo.photo"></ion-img>
+   </div>
+   <div class="location-container">
+    <ion-item>
+        <ion-label>Users</ion-label>
+        <ion-select >
+          <ion-select-option *ngFor="let city of cities" [value]="city">{{city.city}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+   </div>
+   
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="optionsClicked()">
             <ion-icon name="camera-outline"></ion-icon>
