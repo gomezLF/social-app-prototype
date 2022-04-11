@@ -1,11 +1,12 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, forwardRef, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
 import { UserService } from '../../services/user.service';
+import { AppModule } from 'src/app/app.module';
 
 @Component({
   selector: 'app-login',
@@ -14,17 +15,18 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginPage implements OnInit {
 
-  user: any;
+  user: UserService;
   loginForm: FormGroup;
   public errormessages: { email: { type: string; message: string }[]; password: { type: string; message: string }[] };
 
   constructor(private formBuilder: FormBuilder,
               private router: Router, private http: HttpClient,
               private alertController: AlertController,
-              private userService: UserService) {
+              @Inject(forwardRef(() => UserService)) userService: UserService) {
 
     this.initializeForm();
     this.initializrErrorMessages();
+    this.user = userService;
   }
 
   get email() {
@@ -36,8 +38,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.userService;
-    console.log('getUsers call');
+
   }
 
   loginClicked() {

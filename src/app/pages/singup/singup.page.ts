@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, forwardRef, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppModule } from 'src/app/app.module';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./singup.page.scss'],
 })
 export class SingupPage implements OnInit {
-  user: any;
+
+  user: UserService;
   singupForm: FormGroup;
   public errormessages: { name: { type: string; message: string }[];
                           lastname: { type: string; message: string }[];
@@ -17,9 +19,13 @@ export class SingupPage implements OnInit {
                           password: { type: string; message: string }[];
                           confirmPassword: { type: string; message: string }[]; };
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) {
+  constructor(private formBuilder: FormBuilder,
+                      private router: Router,
+                      @Inject(forwardRef(() => UserService)) userService: UserService) {
+
     this.initializeForm();
     this.initializeErrorMessages();
+    this.user = userService;
   }
 
   get name() {
@@ -43,12 +49,11 @@ export class SingupPage implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.userService;
   }
 
   singupClicked() {
     if(this.password.value === this.confirmPassword.value){
-      this.userService.createNewUser(0, this.name.value, this.lastname.value, this.email.value, this.password.value);
+      this.user.createNewUser(0, this.name.value, this.lastname.value, this.email.value, this.password.value);
     }
 
     this.router.navigate(['./login']);

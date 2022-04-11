@@ -6,9 +6,7 @@ import { BehaviorSubject, from, of } from 'rxjs';
 
 const USERS_KEY = 'users';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
   users: Array<{
@@ -18,7 +16,7 @@ export class UserService {
     lastname: string;
     email: string;
     password: string;
-  }>;
+  }> = [];
 
   currentUser: {
     id: string;
@@ -32,7 +30,6 @@ export class UserService {
   private storageReady = new BehaviorSubject(false);
 
   constructor(private storage: Storage) {
-    this.users = [];
     this.init();
   }
 
@@ -80,7 +77,6 @@ export class UserService {
   }
 
   createNewUser(id: number, name: string, lastname: string, email: string, password: string) {
-    console.log(this.users);
     let newId = id;
 
     if(newId === 0){
@@ -124,6 +120,14 @@ export class UserService {
       filter(ready => ready),
       switchMap(_ => from(this.storage.get(USERS_KEY)) || of([]))
     );
+  }
+
+  private verifyUsersFile(){
+    this.getUsers();
+
+    if(this.users.length === 0){
+      this.createInitialUsers();
+    }
   }
 
 }
