@@ -11,6 +11,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
 import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
 import { UserService } from './services/user.service';
+import { PhotoService } from './services/photo.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,7 @@ import { UserService } from './services/user.service';
       driverOrder: [CordovaSQLiteDriver._driver, Drivers.IndexedDB, Drivers.LocalStorage]
     })
   ],
-  providers: [UserService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [UserService, PhotoService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
