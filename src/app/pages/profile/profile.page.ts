@@ -37,11 +37,10 @@ export class ProfilePage implements OnInit {
   }
 
   saveChangesClicked() {
-    console.log(this.profileNameLabel);
-    console.log(this.nameInputValue);
-    console.log(this.lastnameInputValue);
-    console.log(this.emailInputValue);
-    console.log(this.profileNameLabel.nativeElement.innerText);
+    this.user.updateCurrentUser(this.profileNameLabel.nativeElement.innerText,
+                                this.nameInputValue,
+                                this.lastnameInputValue,
+                                this.emailInputValue);
   }
 
 }

@@ -104,6 +104,16 @@ export class UserService {
     this.storage.set(USERS_KEY, this.users);
   }
 
+  updateCurrentUser(profileName: string, name: string, lastname: string, email: string) {
+    this.currentUser.profileName = profileName;
+    this.currentUser.name = name;
+    this.currentUser.lastname = lastname;
+    this.currentUser.email = email;
+
+    console.log(this.users);
+    this.saveUsers();
+  }
+
   private createInitialUsers() {
     this.createNewUser(1, 'Luis Pepito', 'Gomez Andrade', 'alfa@gmail.com', 'aplicacionesmoviles');
     this.createNewUser(2, 'Fulanito', 'Andrade Gomez', 'beta@gmail.com', 'aplicacionesmoviles');
