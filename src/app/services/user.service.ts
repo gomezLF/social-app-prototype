@@ -14,6 +14,7 @@ export class UserService {
   users: Array<{
     id: string;
     profileName: string;
+    profileImage: string;
     name: string;
     lastname: string;
     email: string;
@@ -24,6 +25,7 @@ export class UserService {
   currentUser: {
     id: string;
     profileName: string;
+    profileImage: string;
     name: string;
     lastname: string;
     email: string;
@@ -93,6 +95,7 @@ export class UserService {
     const newUser = {
       id: '' + newId,
       profileName: '' + name + ' ' + lastname,
+      profileImage: '',
       name: '' + name,
       lastname: '' + lastname,
       email: '' + email,
