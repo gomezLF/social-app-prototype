@@ -14,10 +14,10 @@
              </ion-item>
         </div>
         <div class="message-container">
-             <ion-textarea class="message-texarea"></ion-textarea>
+             <ion-textarea class="message-texarea" placeholder="Mensaje de la publicación"></ion-textarea>
         </div>
         <div class="publish-button-container">
-            <ion-button class="publish">Publicar</ion-button>
+            <ion-button (click)="publishClicked()" class="publish">Publicar</ion-button>
         </div>
     </div>
    

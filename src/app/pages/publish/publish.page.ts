@@ -55,6 +55,10 @@ export class PublishPage implements OnInit {
     await actionSheet.present();
   }
 
+  publishClicked() {
+    
+  }
+
   private loadCities() {
     return this.httpClient.get('../../../assets/files/co.json')
     .pipe(map((res: any) => res.data));

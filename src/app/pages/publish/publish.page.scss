@@ -34,5 +34,44 @@ ion-content {
     background-color: #9E9E9E;
 }
 
+.content-container .location-container {
+    width: 30rem;
+    margin-top: 5rem;
+}
+
+.content-container .message-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.content-container .message-container .message-texarea {
+    height: 10rem;
+
+    --background: #f0f2f5;
+    border: solid #9E9E9E 1px;
+    --border-radius: 5px;
+}
+
+.content-container .publish-button-container {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 2rem;
+}
+
+.content-container .publish-button-container .publish {
+    text-transform: inherit;
+    font-weight: bold;
+    width: 30rem;
+
+    --box-shadow: none;
+    --border-radius: 15px;
+    --background: #1877F2;
+
+    margin-right: 1rem;
+}
+
+
+
 
 
