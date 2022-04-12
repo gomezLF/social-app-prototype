@@ -7,7 +7,7 @@
         <div class="form-wrapper">
             <form [formGroup]="loginForm">
                 <div>
-                    <ion-input formControlName="email" class="emailField" type="text" placeholder="E-mail"></ion-input>
+                    <ion-input formControlName="email" class="emailField" type="email" placeholder="E-mail"></ion-input>
                     <div *ngFor="let error of errormessages.email">
                         <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
                             <small class="error-message">{{error.message}}</small>

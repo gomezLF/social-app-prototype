@@ -59,7 +59,9 @@ export class UserService {
     this.storage.defineDriver(CordovaSQLiteDriver);
     this.storage.create();
     this.storageReady.next(true);
-    this.createInitialUsers();
+    //this.getUsers();
+    this.verifyUsersFile();
+    //this.createInitialUsers();
   }
 
   getUsers() {
