@@ -4,7 +4,6 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
 import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
@@ -18,7 +17,6 @@ import { PhotoService } from './services/photo.service';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
     IonicStorageModule.forRoot({
       name: 'MyDatabase',
       // eslint-disable-next-line no-underscore-dangle

@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { UserService } from '../../services/user.service';
 
@@ -18,7 +17,7 @@ export class LoginPage implements OnInit {
   public errormessages: { email: { type: string; message: string }[]; password: { type: string; message: string }[] };
 
   constructor(private formBuilder: FormBuilder,
-              private router: Router, private http: HttpClient,
+              private router: Router,
               private alertController: AlertController,
               private userService: UserService) {
 
