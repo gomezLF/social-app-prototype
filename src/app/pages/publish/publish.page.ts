@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActionSheetController } from '@ionic/angular';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActionSheetController, AlertController } from '@ionic/angular';
+import { UserService } from 'src/app/services/user.service';
 import { PhotoService } from '../../services/photo.service';
 
 @Component({
@@ -9,12 +10,22 @@ import { PhotoService } from '../../services/photo.service';
 })
 export class PublishPage implements OnInit {
 
+  //@ViewChild('citySelected') citySelected: ElementRef;
+  //@ViewChild('messageText') messageText: ElementRef;
+
   photo: PhotoService;
+  user: UserService;
   cities: any;
 
+  citySelected: any;
+  messageText;
+
   constructor(private photoService: PhotoService,
-              private actionSheetController: ActionSheetController) {
+              private userService: UserService,
+              private actionSheetController: ActionSheetController,
+              private alertController: AlertController) {
     this.photo = this.photoService;
+    this.user = this.userService;
   }
 
   ngOnInit() {
@@ -52,17 +63,53 @@ export class PublishPage implements OnInit {
 
   publishClicked() {
 
+    if(this.checkFields()){
+      this.photo.makePulication(0, this.messageText,
+        'Colombia, ' + this.citySelected.city,
+        this.user.currentUser.id,
+        this.user.currentUser.profileName,
+        this.user.currentUser.profileImage);
+
+        this.cleanFields();
+
+    }else {
+      this.invalidPublication();
+    }
   }
 
   private loadCities() {
     fetch('../../../assets/files/co.json').then(res=>res.json()).then(json=>{
       this.cities = json.data;
     });
+  }
 
+  private checkFields() {
+    let publish = false;
 
-    /*
-    return this.httpClient.get('../../../assets/files/co.json')
-    .pipe(map((res: any) => res.data));*/
+    if(this.photo.photo !== '') {
+      if(this.citySelected !== undefined) {
+        if(this.messageText !== undefined) {
+          publish = true;
+        }
+      }
+    }
+
+    return publish;
+  }
+
+  private async invalidPublication(){
+    const alert = await this.alertController.create({
+      header: 'Campos vacíos',
+      message: 'Para hacer una publicación, primero debe de llenar todos los campos correspondientes',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  private cleanFields() {
+    this.citySelected = undefined;
+    this.messageText = undefined;
   }
 
 }

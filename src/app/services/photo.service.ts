@@ -23,6 +23,7 @@ export class PhotoService {
     idUser: string;
     profileNameUser: string;
     imageUser: string;
+    time: string;
   }> = [];
 
   currentPhoto: {
@@ -33,6 +34,7 @@ export class PhotoService {
     idUser: string;
     profileNameUser: string;
     imageUser: string;
+    time: string;
   };
 
   constructor() {
@@ -58,6 +60,30 @@ export class PhotoService {
     Camera.getPhoto(options).then((result) => {
       this.photo = result.dataUrl;
     });
+  }
+
+  makePulication(id: number, message: string, place: string, idUser: string, profileNameUser: string, imageUser: string) {
+    let newId = id;
+    const date = new Date();
+
+    if(newId === 0) {
+      newId = this.pothos.length + 1;
+    }
+
+    const newPulication = {
+      id: '' + newId,
+      pathPhoto: this.photo,
+      message: '' + message,
+      place: '' + place,
+      idUser: '' + idUser,
+      profileNameUser: '' + profileNameUser,
+      imageUser: '' + imageUser,
+      time: '' + date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
+    };
+
+    this.pothos.push(newPulication);
+    this.photo = '';
+    console.log(this.pothos);
   }
 
   private requestPermission() {

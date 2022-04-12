@@ -8,13 +8,13 @@
         <div class="location-container">
              <ion-item>
                  <ion-label>Ubicación</ion-label>
-                 <ion-select >
-                    <ion-select-option *ngFor="let city of cities" [value]="city">{{city.city}}</ion-select-option>
+                 <ion-select [(ngModel)]="citySelected">
+                    <ion-select-option value="item" *ngFor="let city of cities" [value]="city">{{city.city}}</ion-select-option>
                  </ion-select>
              </ion-item>
         </div>
         <div class="message-container">
-             <ion-textarea class="message-texarea" placeholder="Mensaje de la publicación"></ion-textarea>
+             <ion-textarea [(ngModel)]="messageText" class="message-texarea" placeholder="Mensaje de la publicación"></ion-textarea>
         </div>
         <div class="publish-button-container">
             <ion-button (click)="publishClicked()" class="publish">Publicar</ion-button>
