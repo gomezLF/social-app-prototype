@@ -41,10 +41,12 @@ export class PhotoService {
 
   async takephoto() {
     const capturedPhoto = await Camera.getPhoto({
-      resultType: CameraResultType.Uri,
+      resultType: CameraResultType.DataUrl,
       source: CameraSource.Camera,
       quality: 100
     });
+
+    this.photo = capturedPhoto.dataUrl;
   }
 
   pickPicture() {
