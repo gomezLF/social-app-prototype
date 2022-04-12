@@ -1,19 +1,21 @@
 <ion-content [fullscreen]="true">
-    <div class="card-container">
+    <div class="card-container" *ngFor="let photo of publish.publish">
         <ion-card>
             <ion-card-header>
-                <ion-img [src]=""></ion-img>
+                <div class="profile-container">
+                    <div class="profile-image" [ngStyle]="{'background-image': 'url(' + photo.imageUser + ')'}"></div>
+                    <div class="profile-conten-container">
+                        <p class="profile-name">{{photo.profileNameUser}}</p>
+                        <p class="time-publish">{{photo.time}}</p>
+                    </div>
+                </div>
+                <ion-img class="publish-photo" [src]="photo.pathPhoto"></ion-img>
             </ion-card-header>
             <ion-card-content>
                 <div class="header-message-container">
-                    <div class="profile-container">
-                        <ion-img class="profile-image" [src]=""></ion-img>
-                        <p class="profile-name"></p>
-                    </div>
-                    <div class="location-container">
-
-                    </div>
+                    <p class="location-publish">{{photo.place}}</p>
                 </div>
+                <ion-textarea class="message-publish" type="text"[value]="photo.message"></ion-textarea>
             </ion-card-content>
         </ion-card>
     </div>
