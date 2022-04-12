@@ -37,7 +37,6 @@ export class PhotoService {
 
   constructor() {
     this.requestPermission();
-    //this.getCurrentUser();
   }
 
   async takephoto() {
