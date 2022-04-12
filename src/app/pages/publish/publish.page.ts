@@ -56,7 +56,7 @@ export class PublishPage implements OnInit {
   }
 
   publishClicked() {
-    
+
   }
 
   private loadCities() {
