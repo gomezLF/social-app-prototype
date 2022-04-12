@@ -121,6 +121,12 @@ export class UserService {
     this.saveUsers();
   }
 
+  updateCurrentUserProfileImage(profileImage: string) {
+    this.currentUser.profileImage = profileImage;
+
+    this.saveUsers();
+  }
+
   private validateLogin() {
     let stop = false;
 

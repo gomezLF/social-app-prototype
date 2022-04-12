@@ -1,11 +1,11 @@
 <ion-content [fullscreen]="true">
     <div class="container">
-        <div (click)="changeProfileImageClicked()" class="profile-image-container"></div>
+        <div class="profile-image-container" [ngStyle]="{'background-image': 'url(' + user.currentUser.profileImage + ')'}"></div>
         <p class="name-label" #labelProfileName contenteditable="true">{{user.currentUser.profileName}}</p>
     </div>
    
     <div class="edit-buttons-section">
-        <ion-button class="edit-profile-button">Editar perfil</ion-button>
+        <ion-button (click)="changeProfileImageClicked()" class="edit-profile-button">Editar foto de perfil</ion-button>
         <ion-button (click)="moreOptionsClicked()" class="more-options-button">...</ion-button>
     </div>
 

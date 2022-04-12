@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { ElementRef } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
+import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
 
 @Component({
   selector: 'app-profile',
@@ -30,7 +31,14 @@ export class ProfilePage implements OnInit {
   }
 
   changeProfileImageClicked() {
-    console.log('hola');
+    const options: ImageOptions = {
+      source: CameraSource.Photos,
+      resultType: CameraResultType.DataUrl
+    };
+
+    Camera.getPhoto(options).then((result) => {
+      this.user.updateCurrentUserProfileImage(result.dataUrl);
+    });
   }
 
   moreOptionsClicked() {
