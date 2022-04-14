@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { filter, switchMap } from 'rxjs/operators';
 import { Storage } from '@ionic/storage-angular';
 import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
-import { BehaviorSubject, from, of } from 'rxjs';
+import { from, of } from 'rxjs';
 
 const USERS_KEY = 'users';
 
@@ -33,8 +32,6 @@ export class UserService {
     login: boolean;
   };
 
-  private storageReady = new BehaviorSubject(false);
-
   constructor(private storage: Storage) {
     this.init();
   }
@@ -55,22 +52,22 @@ export class UserService {
     this.currentUser.email = email;
   }
 
-  init() {
-    this.storage.defineDriver(CordovaSQLiteDriver);
-    this.storage.create();
-    this.storageReady.next(true);
+  async init() {
+    await this.storage.defineDriver(CordovaSQLiteDriver);
+    await this.storage.create();
+    //this.storageReady.next(true);
     //this.getUsers();
     this.verifyUsersFile();
     //this.createInitialUsers();
   }
 
-  getUsers() {
-    this.loadUser().subscribe(res=>{
+  async getUsers() {
+    this.loadUser().subscribe(res => {
       this.users = res;
     });
   }
 
-  validateUser(email, password): boolean {
+  validateUser(email: string, password: string): boolean {
     let stop = false;
 
     for (let index = 0; index < this.users.length && !stop; index++) {
@@ -149,16 +146,14 @@ export class UserService {
   }
 
   private loadUser() {
-    return this.storageReady.pipe(
-      filter(ready => ready),
-      switchMap(_ => from(this.storage.get(USERS_KEY)) || of([]))
-    );
+    return from(this.storage.get(USERS_KEY)) || of([]);
   }
 
   private verifyUsersFile(){
     this.getUsers();
 
     if(this.users.length === 0){
+      console.log('Hola he creado los usuarios xd');
       this.createInitialUsers();
     }
   }

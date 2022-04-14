@@ -35,10 +35,6 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.user = this.userService;
-    console.log('HOla');
-    if(this.user.login) {
-      this.router.navigate(['./initial-tab']);
-    }
   }
 
   loginClicked() {
